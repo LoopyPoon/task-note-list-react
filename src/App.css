@@ -1,38 +1,261 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Comic Sans MS", cursive;
+  background-color: #2C3E50;
+  margin: 2%;
+  display: flex;
+  justify-content: flex-start; /* Выравниваем по левому краю */
+  align-items: flex-start;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-container {
+  display: flex;
+  align-items: baseline;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+/* Общий контейнер для записей */
+.note-container {
+  display: flex;
+  width: 100%;
+  border-radius: 40px;
+  /*box-shadow: 10px 10px 10px 10px rgb(202, 13, 202);*/ /* Тень */
+  overflow: hidden;
+}
+
+.note-list {
+  width: 300px;
+  background-color: #7f8c8d;
+  color: #ffffff;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-start;
+}
+
+.note-list h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Равномерно распределяем кнопки */
+  gap: 10px; /* Промежуток между кнопками */
+  width: 100%;
+}
+
+.note-list .add-note-btn {
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  background-color: #E67E22 ;
   color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 50%;
+  transition: background-color 0.3s; /* Время подсветки кнопки */
 }
 
-.App-link {
-  color: #61dafb;
+.note-list .add-task-btn {
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  background-color: #3498DB;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 50%;
+  transition: background-color 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.note-list button:hover {
+  background-color: #c0392b;
 }
+
+.note-list ul {
+  list-style-type: none; /* Убираем значки у списка */
+  width: 100%;
+  min-height: 200px; /* Задаем минимальную высоту списка */
+  max-height: 450px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.note-list .note-title {
+  flex: auto; /* Название заметки занимает оставшееся место */
+  text-align: left; /* Выравниваем текст по левому краю */
+  font-size: 18px;
+}
+
+.note-list li {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #34495e;
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: 18px;
+  transition: background-color 1s;
+  width: 95%; /* Ширина записи заметки */
+  display: flex;
+  position: relative;
+}
+
+.note-list .delete-note-btn {
+  display: none; /* Скрываем кнопку */
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 5px 10px; /* Подкорректируем размеры кнопки */
+  font-size: 14px;
+  transition: background-color 0.3s;
+  white-space: nowrap; /* Чтобы текст на кнопке не переносился */
+  position: absolute; /* Располагаем кнопку справа */
+  top: 50%; /* Располагаем вертикально по центру */
+  right: 16px; /* Отступ от правого края */
+  transform: translateY(-50%); /* Центрируем по вертикали */
+}
+
+/* Показываем кнопку при наведении на элемент списка */
+.note-list li:hover .delete-note-btn {
+  display: inline-block; /* Показываем кнопку */
+}
+
+.note-list .delete-note-btn:hover {
+  background-color: #c0392b;
+}
+
+.note-list li button:hover {
+  background-color: #c0392b;
+}
+
+.note-list .scroll-button {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 15px;
+  align-self: center;
+}
+
+.note-list .scroll-button:hover {
+  background-color: transparent;
+}
+
+.note-list li:hover {
+  background-color: #1abc9c;
+}
+
+.note-editor {
+  background-color: #7f8c8d;
+  flex: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.note-editor input {
+  padding: 15px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 100%; /* Поле ввода занимает всю ширину */
+}
+
+.note-editor textarea {
+  flex: 1;
+  padding: 15px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  resize: none;
+  width: 100%; /* Текстареа занимает всю ширину */
+}
+
+.search-input {
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  width: 100%; /* Занимает всю ширину списка */
+  box-sizing: border-box;
+}
+
+/* Общий контейнер для задач */
+
+/* Стили контейнера задач */
+.tasks-container {
+  margin-left: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Стили отдельной задачи */
+.task-item {
+  margin-bottom: 10px;
+  background-color: chocolate;
+  width: 900px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  position: relative; /* Для правильного позиционирования кнопки */
+}
+
+/* Отмеченная задача */
+.task-item.completed {
+  background-color: aqua;
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Контент задачи */
+.task-content {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+/* Скрываем кнопку удаления по умолчанию */
+.delete-task-btn {
+  display: none; /* Скрываем кнопку */
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 14px;
+  cursor: pointer;
+  position: absolute; /* Располагаем кнопку справа */
+  top: 50%; /* Располагаем вертикально по центру */
+  right: 16px; /* Отступ от правого края */
+  transform: translateY(-50%); /* Центрируем по вертикали */
+}
+
+/* Показываем кнопку при наведении на элемент задачи */
+.task-item:hover .delete-task-btn {
+  display: inline-block; /* Показываем кнопку */
+}
+
+/* Дополнительные стили для кнопки удаления */
+.delete-task-btn:hover {
+  background-color: #c0392b;
+}
+
+
