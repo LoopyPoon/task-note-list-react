@@ -30,7 +30,10 @@ body {
 }
 
 .note-list {
-  width: 300px;
+  width: 100%;
+  min-width: 300px;
+  height: 100%;
+  max-height: 640px;
   background-color: #7f8c8d;
   color: #ffffff;
   padding: 20px;
@@ -166,7 +169,8 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 100%;
+  min-width: 400px;
 }
 
 .note-editor input {
@@ -213,7 +217,8 @@ body {
 .task-item {
   margin-bottom: 10px;
   background-color: chocolate;
-  width: 900px;
+  width: 100%;
+  min-width: 760px;
   padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
