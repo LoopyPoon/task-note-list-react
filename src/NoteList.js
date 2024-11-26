@@ -1,10 +1,25 @@
+// Импортируем реакт и используем хук useState, для того чтобы могли работать со стейтами
 import React, { useState } from "react";
 import './App.css';
 
+/**
+ * Компонент, отображающий список заметок.
+ *
+ * @param {Object} props - Пропсы компонента.
+ * @param {Array} props.notes - Массив заметок для отображения.
+ * @param {function} props.selectNote - Функция, вызываемая для выбора заметки.
+ * @param {function} props.addNote - Функция для добавления новой заметки.
+ * @param {number} props.selectedNoteIndex - Индекс выбранной заметки.
+ * @param {function} props.deleteNote - Функция для удаления заметки.
+ * @param {function} props.addTask - Функция для добавления задачи.
+ */
 function NoteList({ notes, selectNote, addNote, selectedNoteIndex, deleteNote, addTask }) {
+    // Состояние для поля поиска (обновляется когда воодится текст)
     const [searchText, setSearchText] = useState('');
+    // Ссылка используется для управления прокруткой
     const scrollRef = React.useRef(null);
 
+    // Функции прокрутки по клику на стрелку
     const scrollUp = () => {
         if (scrollRef.current) {
             scrollRef.current.scrollTop -= 100;
@@ -25,6 +40,7 @@ function NoteList({ notes, selectNote, addNote, selectedNoteIndex, deleteNote, a
     return (
         <div className="note-list">
             <h3 className="h3">Notes</h3>
+            {/* Добавлени заметок и задач, по клику вызываются переданные функции */}
             <div className="button-container">
                 <button className="add-note-btn" onClick={addNote}>Add note</button>
                 <button className="add-task-btn" onClick={addTask}>Add task</button>

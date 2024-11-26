@@ -4,11 +4,16 @@ import NoteEditor from './NoteEditor';
 import TaskList from "./TaskList";
 import './App.css';
 
+/**
+ * Основной компонент приложения для управления заметками и задачами.
+ *
+ * @returns {JSX.Element}.
+ */
 function App() {
     const [notes, setNotes] = useState([]); // Список заметок
     const [currentNote, setCurrentNote] = useState({title: '', content: ''}); // Текущая заметка
     const [selectedNoteIndex, setSelectedNoteIndex] = useState(null); // Выбранная заметка
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState([]); // Список задач
 
     // Добавить новую заметку
     const addNote = () => {
